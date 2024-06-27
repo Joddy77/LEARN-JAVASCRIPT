@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class User {
+        constructor(inputUsername, inputAge, inputFirtsName, inputLastName) {
+          this.username = inputUsername;
+          this.age = inputAge;
+          this.inputFirtsName = inputFirtsName;
+          this.inputLastName = inputLastName;
+        }
+
+        #getFullName() {
+          return `${this.inputFirtsName} ${this.inputLastName}`;
+        }
+
+        greeting() {
+          return `Hello, im ${this.#getFullName()}`;
+        }
+
+        introduction() {
+          return `My name is ${this.#getFullName()}, i am ${
+            this.age
+          } years old`;
+        }
+      };
+
+      // ini adalah cara bagaimana kita membuat suatu function yang  di simpan di dalam prototype.
+    //   User.prototype.hello = function() {
+    //     return "Hello!";
+    //   };
+
+    class Admin {}
+
+    Admin = User;
+
+    Admin.prototype.division = "finance";
+
+    const user1 = new User("Cella", 20, "Marcella", "Jonesta");
+    const user2 = new User("doraemon", 20, "Joddy", "Setiawan");
+
+      console.log(user1);
+      console.log(user2);
+    </script>
+  </body>
+</html>

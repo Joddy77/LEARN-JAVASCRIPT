@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class User {
+        constructor(inputUsername, inputAge, inputFirtsName, inputLastName) {
+          this.username = inputUsername;
+          this.age = inputAge;
+          this.inputFirtsName = inputFirtsName;
+          this.inputLastName = inputLastName;
+        };
+
+        #getFullName() {
+          return `${this.inputFirtsName} ${this.inputLastName}`;
+        };
+
+        greeting = function() {
+          return `Hello, im ${this.#getFullName()}`;
+        };
+
+        introduction() {
+          return `My name is ${this.#getFullName()}, i am ${
+            this.age
+          } years old`;
+        };
+      };
+
+      // ini adalah cara bagaimana kita membuat suatu function yang  di simpan di dalam prototype.
+      //   User.prototype.hello = function() {
+      //     return "Hello!";
+      //   };
+
+      // ini adalah cara bagaimana ketika ingin membuat suatu class baru dan di dalam nya ingin seperti class lain yang di target supaya ketika di beri suatu input maka class dari target tidak akan ikut berubah.
+      class Admin extends User {
+        constructor(
+          inputUsername,
+          inputAge,
+          inputFirtsName,
+          inputLastName,
+          inputDivison
+        ) {
+            // super adalah keyword untuk mereuse isi dari constructor yang di targetkan.
+          super(inputUsername, inputAge, inputFirtsName, inputLastName);
+          this.divison = inputDivison;
+        };
+
+        greeting = function() {
+          return `Hello, im an admin`;
+        };
+      };
+
+      const admin = new Admin("Cella", 20, "Marcella", "Jonesta", "Sales");
+      const user = new User("doraemon", 20, "Joddy", "Setiawan");
+
+      console.log(admin.greeting());
+      console.log(user.greeting());
+    </script>
+  </body>
+</html>
